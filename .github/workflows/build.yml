@@ -21,12 +21,12 @@ jobs:
           install: mingw-w64-x86_64-gcc mingw-w64-x86_64-binutils
 
       - name: Build executables
-        shell: msys2 {0}
-        run: |
-          cmd.exe /c build.bat
+        shell: cmd
+        run: build.bat
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: sniplite-windows-x64
           path: build/*.exe
+          if-no-files-found: error
